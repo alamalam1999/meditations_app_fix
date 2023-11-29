@@ -82,22 +82,21 @@ class _MainScreenState extends State<MainScreen> {
                         setState(() {
                           _playingIndex = null;
                         });
-
                         audioPlayer.stop();
                       } else {
                         try {
-                          await audioPlayer.setUrl("url Path....");
-
+                          audioPlayer.setAsset(items[index].audioPath);
+                          // await audioPlayer.setUrl("url path ...");
                           audioPlayer.play();
-
                           setState(() {
                             _playingIndex = index;
                           });
                         } on SocketException {
                           print("No internet connection");
-                        } catch (error) {
+                        } catch (error){
                           print(error);
                         }
+
                       }
                     },
                   ),
